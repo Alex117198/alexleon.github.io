@@ -2,9 +2,7 @@
 <html>
 <head>
 <title>Alex G. León Valero - Game Developer</title>
-
 <style>
-
 body{
     font-family: Arial, sans-serif;
     background: url("https://images.unsplash.com/photo-1507924538820-ede94a04019d") no-repeat center center/cover;
@@ -20,32 +18,33 @@ body{
     width:80%;
     margin:auto;
     padding:40px;
-    background: rgba(0,0,0,0.6);
-    border-radius:10px;
+    background: rgba(0,0,0,0.75);
+    border-radius:12px;
     margin-top:40px;
 }
 
 /* TITULOS */
 
 h1{
-    font-size:40px;
+    font-size:42px;
     margin-bottom:10px;
 }
 
 h2{
     margin-top:40px;
-    color:#00d4ff;
+    color:#d4af37; /* dorado */
 }
 
 /* TARJETAS */
 
 .card{
-    background:#1f1f2e;
+    background:#2b0f0f;
     padding:20px;
     margin:20px auto;
     border-radius:10px;
-    width:300px;
-    box-shadow:0 0 15px rgba(0,0,0,0.5);
+    width:320px;
+    border:2px solid #d4af37;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
 }
 
 /* BOTONES */
@@ -53,15 +52,18 @@ h2{
 .button{
     text-decoration:none;
     color:white;
-    background:#00d4ff;
+    background:#8b0000;
     padding:10px 20px;
-    border-radius:5px;
+    border-radius:6px;
     display:inline-block;
     margin-top:10px;
+    border:1px solid #d4af37;
+    transition:0.3s;
 }
 
 .button:hover{
-    background:#00a6c9;
+    background:#b22222;
+    transform:scale(1.05);
 }
 
 /* REDES */
@@ -75,10 +77,10 @@ h2{
 }
 
 .disabled{
-    background:#555;
+    background:#444;
     color:#bbb;
     padding:10px 20px;
-    border-radius:5px;
+    border-radius:6px;
 }
 
 /* LISTAS */
@@ -86,10 +88,6 @@ h2{
 ul{
     list-style:none;
     padding:0;
-}
-
-li{
-    margin:10px 0;
 }
 
 /* TELON */
@@ -108,7 +106,7 @@ li{
 .curtain-right{
     width:50%;
     height:100%;
-    background:linear-gradient(to right,#7a0000,#b30000);
+    background:linear-gradient(to right,#5a0000,#8b0000);
     transition:transform 2s ease;
 }
 
@@ -120,7 +118,7 @@ li{
     transform-origin:right;
 }
 
-/* ANIMACION APERTURA */
+/* APERTURA */
 
 .open .curtain-left{
     transform:translateX(-100%);
@@ -138,23 +136,29 @@ li{
 
 <!-- TELON -->
 
-<div class="curtain">
-    <div class="curtain-left"></div>
-    <div class="curtain-right"></div>
+<div class="curtain" id="curtain">
+<div class="curtain-left"></div>
+<div class="curtain-right"></div>
 </div>
 
 <div class="container">
 
-<h1>Hola, soy Alex Valero 👋</h1>
+<h1>🎭 Alex Valero</h1>
 
-<p>Soy ingeniero de sistemas y desarrollador de videojuegos usando Unity, C# y .NET.</p>
+<p>Ingeniero de sistemas y desarrollador de videojuegos usando Unity, C# y .NET.</p>
 
 <h2>🎮 Proyectos</h2>
 
 <div class="card">
+
 <h3>Skelly Scape</h3>
+
 <p>Juego desarrollado en Unity.</p>
-<a class="button" href="https://alexvalero.itch.io/skelly-scape" target="_blank">Jugar en Itch.io</a>
+
+<a class="button" href="https://alexvalero.itch.io/skelly-scape" target="_blank">
+Jugar en Itch.io
+</a>
+
 </div>
 
 <h2>🧠 Habilidades</h2>
@@ -198,13 +202,21 @@ Instagram (Disabled for now)
 
 /* ABRIR TELON */
 
-window.onload = function() {
+window.onload = function(){
 
-    setTimeout(function(){
+setTimeout(function(){
 
-        document.body.classList.add("open");
+document.body.classList.add("open");
 
-    }, 500);
+},500);
+
+/* quitar telon para que no bloquee clics */
+
+setTimeout(function(){
+
+document.getElementById("curtain").style.display="none";
+
+},2500);
 
 };
 
