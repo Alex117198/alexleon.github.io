@@ -7,18 +7,25 @@
 
 body{
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1e1e2f, #121212);
+    background: url("https://images.unsplash.com/photo-1507924538820-ede94a04019d") no-repeat center center/cover;
     color: white;
     margin:0;
     padding:0;
     text-align:center;
 }
 
+/* CONTENEDOR */
+
 .container{
     width:80%;
     margin:auto;
     padding:40px;
+    background: rgba(0,0,0,0.6);
+    border-radius:10px;
+    margin-top:40px;
 }
+
+/* TITULOS */
 
 h1{
     font-size:40px;
@@ -30,6 +37,8 @@ h2{
     color:#00d4ff;
 }
 
+/* TARJETAS */
+
 .card{
     background:#1f1f2e;
     padding:20px;
@@ -38,6 +47,8 @@ h2{
     width:300px;
     box-shadow:0 0 15px rgba(0,0,0,0.5);
 }
+
+/* BOTONES */
 
 .button{
     text-decoration:none;
@@ -52,6 +63,8 @@ h2{
 .button:hover{
     background:#00a6c9;
 }
+
+/* REDES */
 
 .social{
     display:flex;
@@ -68,6 +81,8 @@ h2{
     border-radius:5px;
 }
 
+/* LISTAS */
+
 ul{
     list-style:none;
     padding:0;
@@ -77,11 +92,56 @@ li{
     margin:10px 0;
 }
 
+/* TELON */
+
+.curtain{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    display:flex;
+    z-index:9999;
+}
+
+.curtain-left,
+.curtain-right{
+    width:50%;
+    height:100%;
+    background:linear-gradient(to right,#7a0000,#b30000);
+    transition:transform 2s ease;
+}
+
+.curtain-left{
+    transform-origin:left;
+}
+
+.curtain-right{
+    transform-origin:right;
+}
+
+/* ANIMACION APERTURA */
+
+.open .curtain-left{
+    transform:translateX(-100%);
+}
+
+.open .curtain-right{
+    transform:translateX(100%);
+}
+
 </style>
 
 </head>
 
 <body>
+
+<!-- TELON -->
+
+<div class="curtain">
+    <div class="curtain-left"></div>
+    <div class="curtain-right"></div>
+</div>
 
 <div class="container">
 
@@ -98,6 +158,7 @@ li{
 </div>
 
 <h2>🧠 Habilidades</h2>
+
 <ul>
 <li>Unity</li>
 <li>C#</li>
@@ -128,9 +189,26 @@ Instagram (Disabled for now)
 </div>
 
 <h2>📩 Contacto</h2>
+
 <p>Email: alye198@hotmail.com</p>
 
 </div>
+
+<script>
+
+/* ABRIR TELON */
+
+window.onload = function() {
+
+    setTimeout(function(){
+
+        document.body.classList.add("open");
+
+    }, 500);
+
+};
+
+</script>
 
 </body>
 </html>
