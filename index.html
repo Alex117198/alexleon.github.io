@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Alex G. León Valero - Game Developer</title>
+<title>Alex G. León Valero - Game Developer</title>
 
 <style>
 
@@ -39,7 +39,7 @@ h2{
     box-shadow:0 0 15px rgba(0,0,0,0.5);
 }
 
-a{
+.button{
     text-decoration:none;
     color:white;
     background:#00d4ff;
@@ -49,8 +49,23 @@ a{
     margin-top:10px;
 }
 
-a:hover{
+.button:hover{
     background:#00a6c9;
+}
+
+.social{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.disabled{
+    background:#555;
+    color:#bbb;
+    padding:10px 20px;
+    border-radius:5px;
 }
 
 ul{
@@ -79,7 +94,7 @@ li{
 <div class="card">
 <h3>Skelly Scape</h3>
 <p>Juego desarrollado en Unity.</p>
-<a href="https://alexvalero.itch.io/skelly-scape" target="_blank">Jugar en Itch.io</a>
+<a class="button" href="https://alexvalero.itch.io/skelly-scape" target="_blank">Jugar en Itch.io</a>
 </div>
 
 <h2>🧠 Habilidades</h2>
@@ -91,11 +106,26 @@ li{
 </ul>
 
 <h2>🌐 Redes</h2>
-<ul>
-<li>GitHub</li>
-<li>LinkedIn</li>
-<li>Itch.io</li>
-</ul>
+
+<div class="social">
+
+<a class="button" href="https://github.com/Alex117198" target="_blank">
+GitHub
+</a>
+
+<a class="button" href="https://www.linkedin.com/in/alex-leon-a84a68233/" target="_blank">
+LinkedIn
+</a>
+
+<a class="button" href="https://alexvalero.itch.io/" target="_blank">
+Itch.io
+</a>
+
+<span class="disabled">
+Instagram (Disabled for now)
+</span>
+
+</div>
 
 <h2>📩 Contacto</h2>
 <p>Email: alye198@hotmail.com</p>
