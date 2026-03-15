@@ -7,64 +7,76 @@
 <style>
 
 body{
-font-family: Arial;
-background:#0f0f14;
+font-family:Arial;
+background:#0b0b12;
 color:white;
 margin:0;
 overflow-x:hidden;
 }
 
+/* CONTENEDOR */
+
 .container{
-width:1000px;
-max-width:90%;
+width:1100px;
+max-width:92%;
 margin:auto;
+position:relative;
+z-index:5;
 }
 
 /* HERO */
 
 .hero{
 text-align:center;
-padding:100px 0;
+padding:120px 0;
+position:relative;
 }
 
 .hero h1{
-font-size:48px;
+font-size:52px;
 margin:0;
+letter-spacing:2px;
 }
 
 .hero p{
 font-size:20px;
 color:#aaa;
+margin-top:10px;
 }
 
+/* BOTONES */
+
 .buttons{
-margin-top:20px;
+margin-top:25px;
 }
 
 .button{
 display:inline-block;
-padding:12px 22px;
-margin:5px;
+padding:12px 26px;
+margin:6px;
 background:#6c5ce7;
 border-radius:8px;
 text-decoration:none;
 color:white;
-transition:0.2s;
+font-weight:bold;
+transition:0.25s;
+box-shadow:0 0 10px rgba(108,92,231,0.4);
 }
 
 .button:hover{
-transform:translateY(-2px);
+transform:translateY(-3px);
+box-shadow:0 0 20px rgba(108,92,231,0.8);
 }
 
 /* SECCIONES */
 
 section{
-margin-top:80px;
+margin-top:90px;
 }
 
 h2{
-font-size:32px;
-margin-bottom:20px;
+font-size:34px;
+margin-bottom:25px;
 }
 
 /* PROYECTOS */
@@ -72,21 +84,33 @@ margin-bottom:20px;
 .projects{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:30px;
+gap:35px;
 }
+
+/* TARJETA PROYECTO */
 
 .project{
-background:#181820;
+background:#15151d;
 padding:25px;
-border-radius:12px;
+border-radius:14px;
+transition:0.35s;
+transform-style:preserve-3d;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
 }
 
-.project h3{
-margin-top:0;
+.project:hover{
+transform:rotateX(6deg) rotateY(-6deg) scale(1.03);
+box-shadow:0 0 40px rgba(108,92,231,0.4);
+}
+
+.project img{
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
 }
 
 .project ul{
-padding-left:20px;
+padding-left:18px;
 color:#ccc;
 }
 
@@ -95,23 +119,61 @@ color:#ccc;
 .skills{
 display:flex;
 flex-wrap:wrap;
-gap:10px;
+gap:12px;
 }
 
 .skill{
-background:#181820;
-padding:10px 15px;
-border-radius:20px;
+background:#15151d;
+padding:10px 16px;
+border-radius:25px;
+font-size:14px;
+box-shadow:0 0 10px rgba(0,0,0,0.6);
 }
 
 /* CONTACT */
 
 .contact{
 text-align:center;
-margin:100px 0;
+margin:120px 0;
 }
 
-/* CONTENEDOR MURCIELAGOS */
+/* NIEBLA */
+
+.fog{
+position:fixed;
+width:200%;
+height:200%;
+background:url("https://i.imgur.com/8yKXsgT.png");
+opacity:0.05;
+animation:fogMove 60s linear infinite;
+pointer-events:none;
+z-index:1;
+}
+
+@keyframes fogMove{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+/* PARTICULAS */
+
+.particle{
+position:fixed;
+width:3px;
+height:3px;
+background:white;
+opacity:0.2;
+border-radius:50%;
+pointer-events:none;
+animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+0%{transform:translateY(0)}
+100%{transform:translateY(120vh)}
+}
+
+/* MURCIELAGOS */
 
 .bat-container{
 position:fixed;
@@ -120,45 +182,30 @@ left:0;
 width:100%;
 height:100%;
 pointer-events:none;
-overflow:hidden;
-z-index:100;
+z-index:4;
 }
-
-/* MURCIELAGO */
 
 .bat{
 position:absolute;
 font-size:28px;
-animation:batDrop linear forwards;
+animation:batFall linear forwards;
 }
 
-/* ANIMACION */
-
-@keyframes batDrop{
+@keyframes batFall{
 
 0%{
-transform:translateY(-120px) translateX(0px) scale(0.7);
+transform:translateY(-120px) scale(0.6);
 opacity:0;
 }
 
-10%{
-opacity:1;
-}
+10%{opacity:1;}
 
-30%{
-transform:translateY(30vh) translateX(-20px);
-}
-
-60%{
-transform:translateY(60vh) translateX(20px);
-}
-
-80%{
-transform:translateY(80vh) translateX(-10px);
+50%{
+transform:translateY(50vh) translateX(-20px);
 }
 
 100%{
-transform:translateY(110vh) translateX(10px);
+transform:translateY(110vh) translateX(20px);
 opacity:0;
 }
 
@@ -170,18 +217,24 @@ opacity:0;
 
 <body>
 
+<div class="fog"></div>
+
 <div class="bat-container" id="bats"></div>
 
 <div class="container">
 
-<div class="hero">
+<div class="hero" id="hero">
 
-<h1>Alex León Valero</h1>
+<h1 id="title">Alex León Valero</h1>
 
 <p>Game Developer | Unity | C#</p>
 
 <div class="buttons">
+
 <a class="button" href="#projects">Ver Proyectos</a>
+
+<a class="button" href="mailto:alye198@hotmail.com">Contactar</a>
+
 </div>
 
 </div>
@@ -192,9 +245,9 @@ opacity:0;
 
 <p>
 Soy Ingeniero de Sistemas y desarrollador de videojuegos enfocado en crear
-mecánicas de gameplay y sistemas interactivos usando Unity y C#. Me gusta
-desarrollar controles de personaje, cámaras y elementos que hacen que el
-juego se sienta dinámico y responsivo.
+mecánicas de gameplay, sistemas de cámara y controles de personaje usando
+Unity y C#. Disfruto construir experiencias interactivas que se sientan
+dinámicas y responsivas para el jugador.
 </p>
 
 </section>
@@ -209,6 +262,10 @@ juego se sienta dinámico y responsivo.
 
 <h3>Skelly Scape</h3>
 
+<!-- puedes poner un gif del gameplay aqui -->
+
+<img src="https://i.imgur.com/Z6XKJpF.gif">
+
 <ul>
 <li>Programación del movimiento del personaje</li>
 <li>Sistema de cámara</li>
@@ -216,7 +273,7 @@ juego se sienta dinámico y responsivo.
 <li>Creación del lore del personaje</li>
 </ul>
 
-<a class="button" href="https://alexvalero.itch.io/skelly-scape">
+<a class="button" href="https://alexvalero.itch.io/skelly-scape" target="_blank">
 Jugar en Itch
 </a>
 
@@ -235,6 +292,8 @@ Jugar en Itch
 <div class="skill">Unity</div>
 <div class="skill">C#</div>
 <div class="skill">Gameplay Programming</div>
+<div class="skill">Character Controllers</div>
+<div class="skill">Camera Systems</div>
 <div class="skill">.NET</div>
 <div class="skill">SQL</div>
 
@@ -247,8 +306,11 @@ Jugar en Itch
 <h2>Contacto</h2>
 
 <a class="button" href="https://www.linkedin.com/in/alex-leon-a84a68233/" target="_blank">LinkedIn</a>
+
 <a class="button" href="https://alexvalero.itch.io/" target="_blank">Itch.io</a>
+
 <a class="button" href="https://github.com/Alex117198" target="_blank">GitHub</a>
+
 <a class="button" href="mailto:alye198@hotmail.com">Email</a>
 
 </div>
@@ -257,36 +319,57 @@ Jugar en Itch
 
 <script>
 
-/* GENERAR BANDADA DESDE ARRIBA */
+/* PARTICULAS FLOTANDO */
 
-function spawnBatGroup(){
+for(let i=0;i<40;i++){
 
-const container = document.getElementById("bats")
+const p=document.createElement("div")
 
-for(let i=0;i<14;i++){
+p.className="particle"
 
-const bat = document.createElement("div")
+p.style.left=Math.random()*100+"vw"
+
+p.style.animationDuration=(8+Math.random()*10)+"s"
+
+p.style.opacity=Math.random()*0.3
+
+document.body.appendChild(p)
+
+}
+
+/* MURCIELAGOS DESDE EL TITULO */
+
+function spawnBats(){
+
+const title=document.getElementById("title")
+
+const rect=title.getBoundingClientRect()
+
+const container=document.getElementById("bats")
+
+for(let i=0;i<12;i++){
+
+const bat=document.createElement("div")
 
 bat.className="bat"
+
 bat.innerHTML="🦇"
 
-bat.style.left = Math.random()*100 + "vw"
+bat.style.left=(rect.left+Math.random()*rect.width)+"px"
 
-bat.style.animationDuration = (4 + Math.random()*2) + "s"
+bat.style.animationDuration=(4+Math.random()*2)+"s"
 
-bat.style.animationDelay = (i * 0.1) + "s"
+bat.style.animationDelay=(i*0.1)+"s"
 
 container.appendChild(bat)
 
-setTimeout(()=>{
-bat.remove()
-},6000)
+setTimeout(()=>bat.remove(),6000)
 
 }
 
 }
 
-window.onload = spawnBatGroup
+window.onload=spawnBats
 
 </script>
 
