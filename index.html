@@ -90,12 +90,6 @@ padding-left:20px;
 color:#ccc;
 }
 
-.project img{
-width:100%;
-border-radius:8px;
-margin-bottom:15px;
-}
-
 /* SKILLS */
 
 .skills{
@@ -117,7 +111,7 @@ text-align:center;
 margin:100px 0;
 }
 
-/* MURCIELAGOS */
+/* CONTENEDOR MURCIELAGOS */
 
 .bat-container{
 position:fixed;
@@ -130,16 +124,20 @@ overflow:hidden;
 z-index:100;
 }
 
+/* MURCIELAGO */
+
 .bat{
 position:absolute;
 font-size:28px;
-animation:batFly linear forwards;
+animation:batDrop linear forwards;
 }
 
-@keyframes batFly{
+/* ANIMACION */
+
+@keyframes batDrop{
 
 0%{
-transform:translateX(-100px) translateY(0px) scale(0.8);
+transform:translateY(-120px) translateX(0px) scale(0.7);
 opacity:0;
 }
 
@@ -147,20 +145,20 @@ opacity:0;
 opacity:1;
 }
 
-25%{
-transform:translateX(25vw) translateY(-20px);
+30%{
+transform:translateY(30vh) translateX(-20px);
 }
 
-50%{
-transform:translateX(50vw) translateY(10px);
+60%{
+transform:translateY(60vh) translateX(20px);
 }
 
-75%{
-transform:translateX(75vw) translateY(-15px);
+80%{
+transform:translateY(80vh) translateX(-10px);
 }
 
 100%{
-transform:translateX(110vw) translateY(0px);
+transform:translateY(110vh) translateX(10px);
 opacity:0;
 }
 
@@ -171,8 +169,6 @@ opacity:0;
 </head>
 
 <body>
-
-<!-- BANDADA DE MURCIELAGOS -->
 
 <div class="bat-container" id="bats"></div>
 
@@ -185,9 +181,7 @@ opacity:0;
 <p>Game Developer | Unity | C#</p>
 
 <div class="buttons">
-
 <a class="button" href="#projects">Ver Proyectos</a>
-
 </div>
 
 </div>
@@ -263,24 +257,24 @@ Jugar en Itch
 
 <script>
 
-/* GENERAR BANDADA DE MURCIELAGOS */
+/* GENERAR BANDADA DESDE ARRIBA */
 
 function spawnBatGroup(){
 
 const container = document.getElementById("bats")
 
-for(let i=0;i<12;i++){
+for(let i=0;i<14;i++){
 
 const bat = document.createElement("div")
 
 bat.className="bat"
 bat.innerHTML="🦇"
 
-bat.style.top = (20 + Math.random()*60) + "vh"
+bat.style.left = Math.random()*100 + "vw"
 
 bat.style.animationDuration = (4 + Math.random()*2) + "s"
 
-bat.style.animationDelay = (i * 0.15) + "s"
+bat.style.animationDelay = (i * 0.1) + "s"
 
 container.appendChild(bat)
 
@@ -291,8 +285,6 @@ bat.remove()
 }
 
 }
-
-/* CUANDO CARGA LA PAGINA */
 
 window.onload = spawnBatGroup
 
