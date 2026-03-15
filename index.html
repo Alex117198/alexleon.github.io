@@ -11,6 +11,7 @@ font-family: Arial;
 background:#0f0f14;
 color:white;
 margin:0;
+overflow-x:hidden;
 }
 
 .container{
@@ -116,11 +117,64 @@ text-align:center;
 margin:100px 0;
 }
 
+/* MURCIELAGOS */
+
+.bat-container{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+z-index:100;
+}
+
+.bat{
+position:absolute;
+font-size:28px;
+animation:batFly linear forwards;
+}
+
+@keyframes batFly{
+
+0%{
+transform:translateX(-100px) translateY(0px) scale(0.8);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+25%{
+transform:translateX(25vw) translateY(-20px);
+}
+
+50%{
+transform:translateX(50vw) translateY(10px);
+}
+
+75%{
+transform:translateX(75vw) translateY(-15px);
+}
+
+100%{
+transform:translateX(110vw) translateY(0px);
+opacity:0;
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
+
+<!-- BANDADA DE MURCIELAGOS -->
+
+<div class="bat-container" id="bats"></div>
 
 <div class="container">
 
@@ -164,7 +218,7 @@ juego se sienta dinámico y responsivo.
 <ul>
 <li>Programación del movimiento del personaje</li>
 <li>Sistema de cámara</li>
-<li>Mecánicas</li>
+<li>Mecánicas de interacción</li>
 <li>Creación del lore del personaje</li>
 </ul>
 
@@ -198,14 +252,51 @@ Jugar en Itch
 
 <h2>Contacto</h2>
 
-<a class="button" href="https://www.linkedin.com/in/alex-leon-a84a68233/" target="_blank" target="_blank">LinkedIn</a>
+<a class="button" href="https://www.linkedin.com/in/alex-leon-a84a68233/" target="_blank">LinkedIn</a>
 <a class="button" href="https://alexvalero.itch.io/" target="_blank">Itch.io</a>
-<a class="button" href="https://github.com/Alex117198">GitHub</a>
+<a class="button" href="https://github.com/Alex117198" target="_blank">GitHub</a>
 <a class="button" href="mailto:alye198@hotmail.com">Email</a>
 
 </div>
 
 </div>
+
+<script>
+
+/* GENERAR BANDADA DE MURCIELAGOS */
+
+function spawnBatGroup(){
+
+const container = document.getElementById("bats")
+
+for(let i=0;i<12;i++){
+
+const bat = document.createElement("div")
+
+bat.className="bat"
+bat.innerHTML="🦇"
+
+bat.style.top = (20 + Math.random()*60) + "vh"
+
+bat.style.animationDuration = (4 + Math.random()*2) + "s"
+
+bat.style.animationDelay = (i * 0.15) + "s"
+
+container.appendChild(bat)
+
+setTimeout(()=>{
+bat.remove()
+},6000)
+
+}
+
+}
+
+/* CUANDO CARGA LA PAGINA */
+
+window.onload = spawnBatGroup
+
+</script>
 
 </body>
 </html>
