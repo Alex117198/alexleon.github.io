@@ -220,41 +220,15 @@ pointer-events:none;
 z-index:4;
 }
 
-.bat{
-position:absolute;
-font-size:28px;
-animation:batFall linear forwards;
-}
-
-@keyframes batFall{
-
-0%{
-transform:translateY(-120px) scale(0.6);
-opacity:0;
-}
-
-10%{opacity:1;}
-
-50%{
-transform:translateY(50vh) translateX(-20px);
-}
-
-100%{
-transform:translateY(110vh) translateX(20px);
-opacity:0;
-}
-
-}
-
 </style>
 
 </head>
 
+<link rel="icon" type="image/png" href="PortafolioIcono.png">
+  
 <body>
 
 <div class="fog"></div>
-
-<div class="bat-container" id="bats"></div>
 
 <div class="container">
 
@@ -393,31 +367,6 @@ p.style.animationDuration=(8+Math.random()*10)+"s"
 p.style.opacity=Math.random()*0.3
 
 document.body.appendChild(p)
-
-}
-
-/* MURCIELAGOS */
-
-function spawnBats(){
-
-const title=document.getElementById("title")
-const rect=title.getBoundingClientRect()
-const container=document.getElementById("bats")
-
-for(let i=0;i<12;i++){
-
-const bat=document.createElement("div")
-
-bat.className="bat"
-bat.innerHTML="🦇"
-
-bat.style.left=(rect.left+Math.random()*rect.width)+"px"
-bat.style.animationDuration=(4+Math.random()*2)+"s"
-bat.style.animationDelay=(i*0.1)+"s"
-
-container.appendChild(bat)
-
-setTimeout(()=>bat.remove(),6000)
 
 }
 
