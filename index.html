@@ -8,7 +8,7 @@
 
 body{
 font-family:Arial;
-background:#0b0b12;
+background:radial-gradient(circle at center,#0f0f1a,#06060a);
 color:white;
 margin:0;
 overflow-x:hidden;
@@ -141,18 +141,23 @@ margin:120px 0;
 
 .fog{
 position:fixed;
+top:0;
+left:0;
 width:200%;
 height:200%;
-background:url("https://i.imgur.com/8yKXsgT.png");
-opacity:0.05;
-animation:fogMove 60s linear infinite;
 pointer-events:none;
 z-index:1;
+opacity:0.25;
+background:
+radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05), transparent 40%),
+radial-gradient(circle at 70% 60%, rgba(255,255,255,0.05), transparent 45%),
+radial-gradient(circle at 40% 80%, rgba(255,255,255,0.04), transparent 50%);
+animation:fogMove 60s linear infinite;
 }
 
 @keyframes fogMove{
-0%{transform:translateX(0)}
-100%{transform:translateX(-50%)}
+0%{transform:translateX(0);}
+100%{transform:translateX(-25%);}
 }
 
 /* PARTICULAS */
@@ -169,8 +174,8 @@ animation:particleMove linear infinite;
 }
 
 @keyframes particleMove{
-0%{transform:translateY(0)}
-100%{transform:translateY(120vh)}
+0%{transform:translateY(0);}
+100%{transform:translateY(120vh);}
 }
 
 /* MURCIELAGOS */
@@ -223,7 +228,7 @@ opacity:0;
 
 <div class="container">
 
-<div class="hero" id="hero">
+<div class="hero">
 
 <h1 id="title">Alex León Valero</h1>
 
@@ -261,8 +266,6 @@ dinámicas y responsivas para el jugador.
 <div class="project">
 
 <h3>Skelly Scape</h3>
-
-<!-- puedes poner un gif del gameplay aqui -->
 
 <img src="https://i.imgur.com/Z6XKJpF.gif">
 
@@ -319,7 +322,7 @@ Jugar en Itch
 
 <script>
 
-/* PARTICULAS FLOTANDO */
+/* PARTICULAS */
 
 for(let i=0;i<40;i++){
 
