@@ -1,183 +1,119 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Alex G. León Valero - Game Developer</title>
+
+<title>Alex León Valero | Game Developer</title>
 
 <style>
 
 body{
-    font-family: Arial, sans-serif;
-    background: url("https://images.unsplash.com/photo-1507924538820-ede94a04019d") no-repeat center center/cover;
-    color:white;
-    margin:0;
-    padding:0;
-    text-align:center;
-    transition:0.4s;
+font-family: Arial;
+background:#0f0f14;
+color:white;
+margin:0;
 }
-
-/* MODO CLARO */
-
-body.light{
-    background:#f4f4f4;
-    color:#111;
-}
-
-/* CONTENEDOR */
 
 .container{
-    width:80%;
-    margin:auto;
-    padding:40px;
-    background: rgba(0,0,0,0.75);
-    border-radius:12px;
-    margin-top:40px;
-    transition:0.4s;
+width:1000px;
+max-width:90%;
+margin:auto;
 }
 
-body.light .container{
-    background:white;
+/* HERO */
+
+.hero{
+text-align:center;
+padding:100px 0;
 }
 
-/* TITULOS */
-
-h1{
-    font-size:42px;
-    margin-bottom:10px;
+.hero h1{
+font-size:48px;
+margin:0;
 }
 
-h2{
-    margin-top:40px;
-    color:#d4af37;
+.hero p{
+font-size:20px;
+color:#aaa;
 }
 
-body.light h2{
-    color:#8b0000;
+.buttons{
+margin-top:20px;
 }
-
-/* TARJETAS */
-
-.card{
-    background:#2b0f0f;
-    padding:20px;
-    margin:20px auto;
-    border-radius:10px;
-    width:320px;
-    border:2px solid #d4af37;
-    box-shadow:0 0 20px rgba(0,0,0,0.6);
-}
-
-body.light .card{
-    background:#eee;
-}
-
-/* HABILIDADES */
-
-.skills{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:15px;
-    margin-top:20px;
-}
-
-.skill{
-    background:#2b0f0f;
-    border:2px solid #d4af37;
-    padding:10px 18px;
-    border-radius:20px;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.skill:hover{
-    background:#8b0000;
-    transform:scale(1.1);
-}
-
-body.light .skill{
-    background:#ddd;
-}
-
-/* BOTONES */
 
 .button{
-    text-decoration:none;
-    color:white;
-    background:#8b0000;
-    padding:10px 20px;
-    border-radius:6px;
-    display:inline-block;
-    margin-top:10px;
-    border:1px solid #d4af37;
-    transition:0.3s;
+display:inline-block;
+padding:12px 22px;
+margin:5px;
+background:#6c5ce7;
+border-radius:8px;
+text-decoration:none;
+color:white;
+transition:0.2s;
 }
 
 .button:hover{
-    background:#b22222;
-    transform:scale(1.05);
+transform:translateY(-2px);
 }
 
-/* REDES */
+/* SECCIONES */
 
-.social{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-top:20px;
+section{
+margin-top:80px;
 }
 
-/* BOTON MODO */
-
-.mode-button{
-    position:fixed;
-    top:20px;
-    right:20px;
-    background:#8b0000;
-    color:white;
-    border:none;
-    padding:10px 15px;
-    border-radius:8px;
-    cursor:pointer;
+h2{
+font-size:32px;
+margin-bottom:20px;
 }
 
-/* TELON */
+/* PROYECTOS */
 
-.curtain{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    display:flex;
-    z-index:9999;
+.projects{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
 }
 
-.curtain-left,
-.curtain-right{
-    width:50%;
-    height:100%;
-    background:linear-gradient(to right,#5a0000,#8b0000);
-    transition:transform 2s ease;
+.project{
+background:#181820;
+padding:25px;
+border-radius:12px;
 }
 
-.curtain-left{
-    transform-origin:left;
+.project h3{
+margin-top:0;
 }
 
-.curtain-right{
-    transform-origin:right;
+.project ul{
+padding-left:20px;
+color:#ccc;
 }
 
-/* APERTURA */
-
-.open .curtain-left{
-    transform:translateX(-100%);
+.project img{
+width:100%;
+border-radius:8px;
+margin-bottom:15px;
 }
 
-.open .curtain-right{
-    transform:translateX(100%);
+/* SKILLS */
+
+.skills{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.skill{
+background:#181820;
+padding:10px 15px;
+border-radius:20px;
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+margin:100px 0;
 }
 
 </style>
@@ -186,109 +122,89 @@ body.light .skill{
 
 <body>
 
-<button class="mode-button" onclick="toggleMode()">Modo</button>
-
-<!-- TELON -->
-
-<div class="curtain" id="curtain">
-<div class="curtain-left"></div>
-<div class="curtain-right"></div>
-</div>
-
 <div class="container">
 
-<h1>Alex Valero</h1>
+<div class="hero">
+
+<h1>Alex León Valero</h1>
 
 <p>Game Developer | Unity | C#</p>
+
+<div class="buttons">
+
+<a class="button" href="#projects">Ver Proyectos</a>
+<a class="button" href="https://github.com/Alex117198">GitHub</a>
+<a class="button" href="mailto:alye198@hotmail.com">Email</a>
+
+</div>
+
+</div>
+
+<section>
 
 <h2>Sobre mí</h2>
 
 <p>
 Soy Ingeniero de Sistemas y desarrollador de videojuegos enfocado en crear
-experiencias interactivas usando Unity y C#. Disfruto programar mecánicas
-de gameplay, sistemas de movimiento de personajes y elementos que hagan
-los mundos de juego más vivos.
+mecánicas de gameplay y sistemas interactivos usando Unity y C#. Me gusta
+desarrollar controles de personaje, cámaras y elementos que hacen que el
+juego se sienta dinámico y responsivo.
 </p>
+
+</section>
+
+<section id="projects">
 
 <h2>Proyectos</h2>
 
-<div class="card">
+<div class="projects">
+
+<div class="project">
 
 <h3>Skelly Scape</h3>
 
-<p>
-Juego desarrollado en Unity donde participé en la programación de varias
-mecánicas del gameplay. Implementé el sistema de movimiento del personaje,
-la cámara principal y mecánicas interactivas como apertura de puertas.
-También colaboré en la creación del lore del juego, incluyendo el nombre
-y la historia del personaje principal, y apoyé en la integración de
-algunas animaciones del personaje.
-</p>
+<ul>
+<li>Programación del movimiento del personaje</li>
+<li>Sistema de cámara</li>
+<li>Mecánica de apertura de puertas</li>
+<li>Creación del lore del personaje</li>
+</ul>
 
-<a class="button" href="https://alexvalero.itch.io/skelly-scape" target="_blank">
-Jugar en Itch.io
+<a class="button" href="https://alexvalero.itch.io/skelly-scape">
+Jugar en Itch
 </a>
 
 </div>
+
+</div>
+
+</section>
+
+<section>
 
 <h2>Habilidades</h2>
 
 <div class="skills">
 
-<span class="skill">Unity</span>
-<span class="skill">C#</span>
-<span class="skill">.NET</span>
-<span class="skill">SQL</span>
+<div class="skill">Unity</div>
+<div class="skill">C#</div>
+<div class="skill">Gameplay Programming</div>
+<div class="skill">.NET</div>
+<div class="skill">SQL</div>
 
 </div>
+
+</section>
+
+<div class="contact">
 
 <h2>Contacto</h2>
 
-<div class="social">
-
-<a class="button" href="https://github.com/Alex117198" target="_blank">
-GitHub
-</a>
-
-<a class="button" href="https://www.linkedin.com/in/alex-leon-a84a68233/" target="_blank">
-LinkedIn
-</a>
-
-<a class="button" href="https://alexvalero.itch.io/" target="_blank">
-Itch.io
-</a>
-
-<a class="button" href="mailto:alye198@hotmail.com">
-Enviar Email
-</a>
+<a class="button" href="mailto:alye198@hotmail.com">Enviar Email</a>
 
 </div>
 
 </div>
-
-<script>
-
-/* ABRIR TELON */
-
-window.onload = function(){
-
-setTimeout(function(){
-document.body.classList.add("open");
-},500);
-
-setTimeout(function(){
-document.getElementById("curtain").style.display="none";
-},2500);
-
-};
-
-/* MODO OSCURO / CLARO */
-
-function toggleMode(){
-document.body.classList.toggle("light");
-}
-
-</script>
 
 </body>
 </html>
