@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <title>Alex G. León Valero - Game Developer</title>
+
 <style>
+
 body{
     font-family: Arial, sans-serif;
     background: url("https://images.unsplash.com/photo-1507924538820-ede94a04019d") no-repeat center center/cover;
-    color: white;
+    color:white;
     margin:0;
     padding:0;
     text-align:center;
+    transition:0.4s;
+}
+
+/* MODO CLARO */
+
+body.light{
+    background:#f4f4f4;
+    color:#111;
 }
 
 /* CONTENEDOR */
@@ -21,6 +32,11 @@ body{
     background: rgba(0,0,0,0.75);
     border-radius:12px;
     margin-top:40px;
+    transition:0.4s;
+}
+
+body.light .container{
+    background:white;
 }
 
 /* TITULOS */
@@ -32,7 +48,11 @@ h1{
 
 h2{
     margin-top:40px;
-    color:#d4af37; /* dorado */
+    color:#d4af37;
+}
+
+body.light h2{
+    color:#8b0000;
 }
 
 /* TARJETAS */
@@ -46,7 +66,13 @@ h2{
     border:2px solid #d4af37;
     box-shadow:0 0 20px rgba(0,0,0,0.6);
 }
-    
+
+body.light .card{
+    background:#eee;
+}
+
+/* HABILIDADES */
+
 .skills{
     display:flex;
     justify-content:center;
@@ -62,15 +88,17 @@ h2{
     border-radius:20px;
     font-weight:bold;
     transition:0.3s;
-    cursor:default;
 }
 
 .skill:hover{
     background:#8b0000;
     transform:scale(1.1);
-    box-shadow:0 0 10px rgba(212,175,55,0.8);
 }
-    
+
+body.light .skill{
+    background:#ddd;
+}
+
 /* BOTONES */
 
 .button{
@@ -100,18 +128,18 @@ h2{
     margin-top:20px;
 }
 
-.disabled{
-    background:#444;
-    color:#bbb;
-    padding:10px 20px;
-    border-radius:6px;
-}
+/* BOTON MODO */
 
-/* LISTAS */
-
-ul{
-    list-style:none;
-    padding:0;
+.mode-button{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#8b0000;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
 /* TELON */
@@ -158,6 +186,8 @@ ul{
 
 <body>
 
+<button class="mode-button" onclick="toggleMode()">Modo</button>
+
 <!-- TELON -->
 
 <div class="curtain" id="curtain">
@@ -169,7 +199,16 @@ ul{
 
 <h1>Alex Valero</h1>
 
-<p>Ingeniero de sistemas y desarrollador de videojuegos usando Unity, C# y .NET.</p>
+<p>Game Developer | Unity | C#</p>
+
+<h2>Sobre mí</h2>
+
+<p>
+Soy Ingeniero de Sistemas y desarrollador de videojuegos enfocado en crear
+experiencias interactivas usando Unity y C#. Disfruto programar mecánicas
+de gameplay, sistemas de movimiento de personajes y elementos que hagan
+los mundos de juego más vivos.
+</p>
 
 <h2>Proyectos</h2>
 
@@ -177,7 +216,14 @@ ul{
 
 <h3>Skelly Scape</h3>
 
-<p>Juego desarrollado en Unity.</p>
+<p>
+Juego desarrollado en Unity donde participé en la programación de varias
+mecánicas del gameplay. Implementé el sistema de movimiento del personaje,
+la cámara principal y mecánicas interactivas como apertura de puertas.
+También colaboré en la creación del lore del juego, incluyendo el nombre
+y la historia del personaje principal, y apoyé en la integración de
+algunas animaciones del personaje.
+</p>
 
 <a class="button" href="https://alexvalero.itch.io/skelly-scape" target="_blank">
 Jugar en Itch.io
@@ -196,7 +242,7 @@ Jugar en Itch.io
 
 </div>
 
-<h2>Redes</h2>
+<h2>Contacto</h2>
 
 <div class="social">
 
@@ -211,12 +257,12 @@ LinkedIn
 <a class="button" href="https://alexvalero.itch.io/" target="_blank">
 Itch.io
 </a>
-    
+
+<a class="button" href="mailto:alye198@hotmail.com">
+Enviar Email
+</a>
+
 </div>
-
-<h2>Contacto</h2>
-
-<p>Email: alye198@hotmail.com</p>
 
 </div>
 
@@ -227,20 +273,20 @@ Itch.io
 window.onload = function(){
 
 setTimeout(function(){
-
 document.body.classList.add("open");
-
 },500);
 
-/* quitar telon para que no bloquee clics */
-
 setTimeout(function(){
-
 document.getElementById("curtain").style.display="none";
-
 },2500);
 
 };
+
+/* MODO OSCURO / CLARO */
+
+function toggleMode(){
+document.body.classList.toggle("light");
+}
 
 </script>
 
