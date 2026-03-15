@@ -139,7 +139,7 @@ margin:120px 0;
 
 /* NIEBLA */
 
-.fog{
+/*.fog{
 position:fixed;
 top:0;
 left:0;
@@ -160,6 +160,22 @@ animation:fogMove 80s linear infinite;
 @keyframes fogMove{
 0%{transform:translateX(0);}
 100%{transform:translateX(-25%);}
+}*/
+
+.fog{
+position:fixed;
+width:200%;
+height:200%;
+background:url("https://i.imgur.com/8yKXsgT.png");
+opacity:0.05;
+animation:fogMove 60s linear infinite;
+pointer-events:none;
+z-index:1;
+}
+
+@keyframes fogMove{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
 }
 
 /* PARTICULAS */
