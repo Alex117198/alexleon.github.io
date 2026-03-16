@@ -4,6 +4,8 @@
 
 <title>Alex G. León Valero | Game Developer</title>
 
+<link rel="icon" type="image/png" href="PortafolioIcono6.png">
+
 <style>
 
 body{
@@ -96,7 +98,6 @@ border-radius:14px;
 transition:0.35s;
 transform-style:preserve-3d;
 box-shadow:0 0 25px rgba(0,0,0,0.6);
-
 max-width:420px;
 width:100%;
 text-align:center;
@@ -112,12 +113,6 @@ transform:rotateX(6deg) rotateY(-6deg) scale(1.03);
 box-shadow:0 0 40px rgba(108,92,231,0.4);
 }
 
-.project img{
-width:100%;
-border-radius:10px;
-margin-bottom:15px;
-}
-
 .project ul{
 padding-left:0;
 list-style-position:inside;
@@ -127,6 +122,12 @@ margin-top:10px;
 }
 
 /* SKILLS */
+
+.skills-columns{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
 
 .skills{
 display:flex;
@@ -186,6 +187,7 @@ animation:particleMove linear infinite;
 }
 
 /* BOTON IR ARRIBA */
+
 #topButton{
 position:fixed;
 bottom:25px;
@@ -207,13 +209,12 @@ z-index:10;
 transform:translateY(-3px);
 box-shadow:0 0 25px rgba(108,92,231,0.9);
 }
-  
-</style>
 
+</style>
 </head>
 
-<link rel="icon" type="image/png" href="PortafolioIcono6.png"> 
 <body>
+
 <div class="fog"></div>
 
 <div class="container">
@@ -222,12 +223,10 @@ box-shadow:0 0 25px rgba(108,92,231,0.9);
 
 <h1 id="title">Alex Valero</h1>
 
-<p>System Engineer | Game Developer | Unity</p>
+<p>System Engineer | Unity Game Developer</p>
 
 <div class="buttons">
-
 <a class="button" href="#projects">View Projects</a>
-
 </div>
 
 </div>
@@ -238,7 +237,6 @@ box-shadow:0 0 25px rgba(108,92,231,0.9);
 
 <p>
 Systems Engineer and game developer focused on creating gameplay mechanics, camera systems, and character controls using Unity and C#.
-
 I develop prototypes and personal projects where I explore new mechanics and game systems to create dynamic and responsive gameplay experiences.
 </p>
 
@@ -258,9 +256,9 @@ I develop prototypes and personal projects where I explore new mechanics and gam
 src="https://itch.io/embed/4366721?border_width=4&amp;dark=true" 
 width="214" 
 height="173">
-<a href="https://alexvalero.itch.io/skelly-scape">Skelly Scape by Red Hatter, Hadeki, Rodrick Arroyave, Juan Laiseca</a>
+<a href="https://alexvalero.itch.io/skelly-scape">Skelly Scape</a>
 </iframe>
-  
+
 <ul>
 <li>Character movement programming</li>
 <li>Camera system</li>
@@ -282,10 +280,13 @@ Play on Itch
 
 <h2>Skills</h2>
 
+<div class="skills-columns">
+
+<div>
+
 <h3>Game Development</h3>
 
 <div class="skills">
-
 <div class="skill">Unity</div>
 <div class="skill">Gameplay Programming</div>
 <div class="skill">Game Systems</div>
@@ -293,15 +294,15 @@ Play on Itch
 <div class="skill">Camera Systems</div>
 <div class="skill">State Machines</div>
 <div class="skill">Game Prototyping</div>
+</div>
 
 </div>
 
-<br>
+<div>
 
 <h3>Programming</h3>
 
 <div class="skills">
-
 <div class="skill">HTML</div>
 <div class="skill">C#</div>
 <div class="skill">Visual Basic</div>
@@ -311,10 +312,11 @@ Play on Itch
 <div class="skill">JavaScript</div>
 <div class="skill">Git</div>
 <div class="skill">GitHub</div>
+</div>
 
 </div>
 
-<br>
+<div>
 
 <h3>Database</h3>
 
@@ -322,6 +324,9 @@ Play on Itch
 <div class="skill">SQL</div>
 <div class="skill">MySQL</div>
 <div class="skill">Oracle</div>
+</div>
+
+</div>
 
 </div>
 
@@ -341,7 +346,7 @@ Play on Itch
 </div>
 
 <button id="topButton">↑</button>
-  
+
 <script>
 
 /* PARTICULAS */
@@ -384,7 +389,7 @@ behavior:"smooth"
 })
 
 })
-  
+
 </script>
 
 </body>
