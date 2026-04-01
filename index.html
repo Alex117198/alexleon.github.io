@@ -3,7 +3,6 @@
 <head>
 
 <title>Alex G. León Valero | Game Developer</title>
-
 <link rel="icon" type="image/png" href="PortafolioIcono6.png">
 
 <style>
@@ -25,23 +24,28 @@ z-index:5;
 }
 
 /* HERO */
-
 .hero{
 text-align:center;
 padding:120px 0;
+position:relative;
 }
 
 .hero h1{
 font-size:52px;
 margin:0;
+letter-spacing:2px;
 }
 
 .hero p{
 font-size:20px;
 color:#aaa;
+margin-top:10px;
 }
 
 /* BOTONES */
+.buttons{
+margin-top:25px;
+}
 
 .button{
 display:inline-block;
@@ -49,13 +53,19 @@ padding:12px 26px;
 margin:6px;
 background:#6c5ce7;
 border-radius:8px;
-color:white;
 text-decoration:none;
+color:white;
 font-weight:bold;
+transition:0.25s;
+box-shadow:0 0 10px rgba(108,92,231,0.4);
+}
+
+.button:hover{
+transform:translateY(-3px);
+box-shadow:0 0 20px rgba(108,92,231,0.8);
 }
 
 /* SECCIONES */
-
 section{
 margin-top:20px;
 }
@@ -65,30 +75,53 @@ font-size:34px;
 margin-bottom:25px;
 }
 
-/* SLIDER */
-
+/* 🔥 SLIDER WRAPPER */
 .projects-wrapper{
 position:relative;
 overflow:hidden;
 }
 
+/* 🔥 SLIDER */
 .projects{
 display:flex;
 gap:35px;
 transition:transform 0.5s ease;
 }
 
+/* TARJETA PROYECTO */
 .project{
 min-width:calc(50% - 20px);
 flex-shrink:0;
 background:#15151d;
 padding:25px;
 border-radius:14px;
+transition:0.35s;
+transform-style:preserve-3d;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
+max-width:420px;
+width:100%;
 text-align:center;
 }
 
-/* FLECHAS */
+.project iframe{
+display:block;
+margin:15px auto;
+}
 
+.project:hover{
+transform:rotateX(6deg) rotateY(-6deg) scale(1.03);
+box-shadow:0 0 40px rgba(108,92,231,0.4);
+}
+
+.project ul{
+padding-left:0;
+list-style-position:inside;
+text-align:left;
+color:#ccc;
+margin-top:10px;
+}
+
+/* 🔥 FLECHAS */
 .arrow{
 position:absolute;
 top:50%;
@@ -102,11 +135,10 @@ border-radius:10px;
 z-index:10;
 }
 
-.left{ left:10px; }
-.right{ right:10px; }
+.left{ left:-10px; }
+.right{ right:-10px; }
 
 /* SKILLS */
-
 .skills-columns{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -123,17 +155,51 @@ gap:12px;
 background:#15151d;
 padding:10px 16px;
 border-radius:25px;
+font-size:14px;
+box-shadow:0 0 10px rgba(0,0,0,0.6);
 }
 
 /* CONTACT */
-
 .contact{
 text-align:center;
 margin:120px 0;
 }
 
-/* BOTON TOP */
+/* NIEBLA */
+.fog{
+position:fixed;
+width:200%;
+height:200%;
+background:url("https://i.imgur.com/8yKXsgT.png");
+opacity:0.05;
+animation:fogMove 60s linear infinite;
+pointer-events:none;
+z-index:1;
+}
 
+@keyframes fogMove{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+/* PARTICULAS */
+.particle{
+position:fixed;
+width:3px;
+height:3px;
+background:white;
+opacity:0.2;
+border-radius:50%;
+pointer-events:none;
+animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+0%{transform:translateY(0);}
+100%{transform:translateY(120vh);}
+}
+
+/* BOTON */
 #topButton{
 position:fixed;
 bottom:25px;
@@ -141,9 +207,19 @@ right:25px;
 background:#6c5ce7;
 color:white;
 border:none;
-padding:12px;
+padding:12px 16px;
 border-radius:10px;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 0 15px rgba(108,92,231,0.6);
+transition:0.3s;
 display:none;
+z-index:10;
+}
+
+#topButton:hover{
+transform:translateY(-3px);
+box-shadow:0 0 25px rgba(108,92,231,0.9);
 }
 
 </style>
@@ -151,23 +227,27 @@ display:none;
 
 <body>
 
+<div class="fog"></div>
+
 <div class="container">
 
 <div class="hero">
 <h1>Alex Valero</h1>
 <p>System Engineer | Unity Game Developer</p>
+
+<div class="buttons">
 <a class="button" href="#projects">View Projects</a>
+</div>
 </div>
 
 <section>
 <h2>About</h2>
 <p>
-Systems Engineer and game developer focused on gameplay mechanics, camera systems and character controls using Unity and C#.
+Systems Engineer and game developer focused on creating gameplay mechanics, camera systems, and character controls using Unity and C#.
 </p>
 </section>
 
 <section id="projects">
-
 <h2>Projects</h2>
 
 <div class="projects-wrapper">
@@ -177,19 +257,43 @@ Systems Engineer and game developer focused on gameplay mechanics, camera system
 
 <div class="projects" id="projectsSlider">
 
+<!-- SKELLY -->
 <div class="project">
 <h3>Skelly Scape</h3>
-<iframe src="https://itch.io/embed/4366721" width="214" height="173"></iframe>
+<iframe src="https://itch.io/embed/4366721?border_width=4&dark=true" width="214" height="173"></iframe>
+<ul>
+<li>Character movement programming</li>
+<li>Camera system</li>
+<li>Interaction mechanics</li>
+<li>Character lore creation</li>
+</ul>
+<a class="button" href="https://alexvalero.itch.io/skelly-scape" target="_blank">Play on Itch</a>
 </div>
 
+<!-- BAIQUIMU -->
 <div class="project">
 <h3>Baiquimú</h3>
-<iframe src="https://itch.io/embed/4426319" width="300" height="167"></iframe>
+<iframe src="https://itch.io/embed/4426319?bg_color=560762&fg_color=ffffff" width="300" height="167"></iframe>
+<ul>
+<li>Player movement and combat systems</li>
+<li>Energy absorption and transfer mechanics</li>
+<li>Fountain charging system design</li>
+<li>Enemy interaction and energy rewards</li>
+<li>Level blockout and gameplay layout</li>
+</ul>
 </div>
 
+<!-- FORTUNE -->
 <div class="project">
 <h3>Fortune Racing</h3>
-<iframe src="https://itch.io/embed/4423190" width="300" height="167"></iframe>
+<iframe src="https://itch.io/embed/4423190?bg_color=642e00&fg_color=ffffff" width="300" height="167"></iframe>
+<ul>
+<li>Player movement and lane switching mechanics</li>
+<li>Turn-based system messaging (UI)</li>
+<li>Combat and attack mechanics</li>
+<li>UI feedback for gameplay events</li>
+<li>Core gameplay scripting</li>
+</ul>
 </div>
 
 </div>
@@ -198,9 +302,7 @@ Systems Engineer and game developer focused on gameplay mechanics, camera system
 </section>
 
 <section>
-
 <h2>Skills</h2>
-
 <div class="skills-columns">
 
 <div>
@@ -209,15 +311,25 @@ Systems Engineer and game developer focused on gameplay mechanics, camera system
 <div class="skill">Unity</div>
 <div class="skill">Gameplay Programming</div>
 <div class="skill">Game Systems</div>
+<div class="skill">Character Controllers</div>
+<div class="skill">Camera Systems</div>
+<div class="skill">State Machines</div>
+<div class="skill">Game Prototyping</div>
 </div>
 </div>
 
 <div>
 <h3>Programming</h3>
 <div class="skills">
+<div class="skill">HTML</div>
 <div class="skill">C#</div>
+<div class="skill">Visual Basic</div>
 <div class="skill">.NET</div>
+<div class="skill">Python</div>
+<div class="skill">Java</div>
 <div class="skill">JavaScript</div>
+<div class="skill">Git</div>
+<div class="skill">GitHub</div>
 </div>
 </div>
 
@@ -226,17 +338,19 @@ Systems Engineer and game developer focused on gameplay mechanics, camera system
 <div class="skills">
 <div class="skill">SQL</div>
 <div class="skill">MySQL</div>
+<div class="skill">Oracle</div>
 </div>
 </div>
 
 </div>
-
 </section>
 
 <div class="contact">
 <h2>Contact</h2>
-<a class="button" href="#">LinkedIn</a>
-<a class="button" href="#">GitHub</a>
+<a class="button" href="https://www.linkedin.com/in/alex-leon-a84a68233/" target="_blank">LinkedIn</a>
+<a class="button" href="https://alexvalero.itch.io/" target="_blank">Itch.io</a>
+<a class="button" href="https://github.com/Alex117198" target="_blank">GitHub</a>
+<a class="button" href="mailto:alye198@hotmail.com">Email</a>
 </div>
 
 </div>
@@ -245,33 +359,37 @@ Systems Engineer and game developer focused on gameplay mechanics, camera system
 
 <script>
 
-// BOTON TOP
-const topButton = document.getElementById("topButton")
+// PARTICULAS
+for(let i=0;i<40;i++){
+const p=document.createElement("div")
+p.className="particle"
+p.style.left=Math.random()*100+"vw"
+p.style.animationDuration=(8+Math.random()*10)+"s"
+p.style.opacity=Math.random()*0.3
+document.body.appendChild(p)
+}
 
+// BOTON
+const topButton = document.getElementById("topButton")
 window.addEventListener("scroll", () => {
 topButton.style.display = window.scrollY > 300 ? "block" : "none"
 })
-
 topButton.onclick = () => window.scrollTo({top:0,behavior:"smooth"})
 
 // SLIDER LOOP
 let currentIndex = 0;
 
 function moveSlide(direction){
-
 const slider = document.getElementById("projectsSlider")
 const projects = document.querySelectorAll(".project")
-
 const maxIndex = projects.length - 2
 
 currentIndex += direction
 
-// LOOP INFINITO 🔥
 if(currentIndex < 0) currentIndex = maxIndex
 if(currentIndex > maxIndex) currentIndex = 0
 
 const width = projects[0].getBoundingClientRect().width + 35
-
 slider.style.transform = `translateX(-${currentIndex * width}px)`
 }
 
