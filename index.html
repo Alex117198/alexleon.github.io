@@ -83,10 +83,20 @@ margin-bottom:25px;
 
 /* PROYECTOS */
 
+.projects-wrapper{
+position:relative;
+overflow:hidden;
+}
+
 .projects{
-display:grid;
-grid-template-columns:1fr 1fr;
+display:flex;
 gap:35px;
+transition:transform 0.5s ease;
+}
+
+.project{
+min-width:45%;
+flex-shrink:0;
 }
 
 /* TARJETA PROYECTO */
@@ -167,6 +177,36 @@ z-index:1;
 0%{transform:translateX(0)}
 100%{transform:translateX(-50%)}
 }
+/* FLECHAS LATERALES EN PROYECTO */
+
+.arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:#6c5ce7;
+border:none;
+color:white;
+font-size:22px;
+padding:12px 16px;
+cursor:pointer;
+border-radius:10px;
+box-shadow:0 0 15px rgba(108,92,231,0.6);
+z-index:10;
+transition:0.3s;
+}
+
+.arrow:hover{
+transform:translateY(-50%) scale(1.1);
+box-shadow:0 0 25px rgba(108,92,231,0.9);
+}
+
+.arrow.left{
+left:10px;
+}
+
+.arrow.right{
+right:10px;
+}
 
 /* PARTICULAS */
 
@@ -244,7 +284,12 @@ I develop prototypes and personal projects where I explore new mechanics and gam
 
 <section id="projects">
 
-<div class="projects">
+<div class="projects-wrapper">
+
+<button class="arrow left" onclick="moveSlide(-1)">❮</button>
+<button class="arrow right" onclick="moveSlide(1)">❯</button>
+
+<div class="projects" id="projectsSlider">
 
 <!-- SKELLY SCAPE -->
 <div class="project">
@@ -320,6 +365,8 @@ height="167">
 <a class="button" href="https://alvinmaker.itch.io/fortune-racing" target="_blank">
 Play on Itch
 </a>
+
+</div>
 
 </div>
 
