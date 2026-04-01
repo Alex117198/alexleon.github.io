@@ -81,7 +81,7 @@ font-size:34px;
 margin-bottom:25px;
 }
 
-/* PROYECTOS */
+/* SLIDER PROYECTOS */
 
 .projects-wrapper{
 position:relative;
@@ -95,11 +95,11 @@ transition:transform 0.5s ease;
 }
 
 .project{
-min-width:45%;
+min-width:calc(50% - 20px);
 flex-shrink:0;
 }
 
-/* TARJETA PROYECTO */
+/* TARJETA */
 
 .project{
 background:#15151d;
@@ -130,6 +130,32 @@ text-align:left;
 color:#ccc;
 margin-top:10px;
 }
+
+/* FLECHAS */
+
+.arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:#6c5ce7;
+border:none;
+color:white;
+font-size:22px;
+padding:12px 16px;
+cursor:pointer;
+border-radius:10px;
+box-shadow:0 0 15px rgba(108,92,231,0.6);
+z-index:10;
+transition:0.3s;
+}
+
+.arrow:hover{
+transform:translateY(-50%) scale(1.1);
+box-shadow:0 0 25px rgba(108,92,231,0.9);
+}
+
+.arrow.left{ left:10px; }
+.arrow.right{ right:10px; }
 
 /* SKILLS */
 
@@ -177,36 +203,6 @@ z-index:1;
 0%{transform:translateX(0)}
 100%{transform:translateX(-50%)}
 }
-/* FLECHAS LATERALES EN PROYECTO */
-
-.arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-background:#6c5ce7;
-border:none;
-color:white;
-font-size:22px;
-padding:12px 16px;
-cursor:pointer;
-border-radius:10px;
-box-shadow:0 0 15px rgba(108,92,231,0.6);
-z-index:10;
-transition:0.3s;
-}
-
-.arrow:hover{
-transform:translateY(-50%) scale(1.1);
-box-shadow:0 0 25px rgba(108,92,231,0.9);
-}
-
-.arrow.left{
-left:10px;
-}
-
-.arrow.right{
-right:10px;
-}
 
 /* PARTICULAS */
 
@@ -226,7 +222,7 @@ animation:particleMove linear infinite;
 100%{transform:translateY(120vh);}
 }
 
-/* BOTON IR ARRIBA */
+/* BOTON TOP */
 
 #topButton{
 position:fixed;
@@ -260,26 +256,19 @@ box-shadow:0 0 25px rgba(108,92,231,0.9);
 <div class="container">
 
 <div class="hero">
-
-<h1 id="title">Alex Valero</h1>
-
+<h1>Alex Valero</h1>
 <p>System Engineer | Unity Game Developer</p>
-
 <div class="buttons">
 <a class="button" href="#projects">View Projects</a>
 </div>
-
 </div>
 
 <section>
-
 <h2>About</h2>
-
 <p>
 Systems Engineer and game developer focused on creating gameplay mechanics, camera systems, and character controls using Unity and C#.
 I develop prototypes and personal projects where I explore new mechanics and game systems to create dynamic and responsive gameplay experiences.
 </p>
-
 </section>
 
 <section id="projects">
@@ -291,155 +280,41 @@ I develop prototypes and personal projects where I explore new mechanics and gam
 
 <div class="projects" id="projectsSlider">
 
-<!-- SKELLY SCAPE -->
+<!-- PROYECTO -->
 <div class="project">
-
 <h3>Skelly Scape</h3>
-
-<iframe frameborder="0" 
-src="https://itch.io/embed/4366721?border_width=4&amp;dark=true" 
-width="214" 
-height="173">
-<a href="https://alexvalero.itch.io/skelly-scape">Skelly Scape</a>
-</iframe>
-
+<iframe src="https://itch.io/embed/4366721?border_width=4&amp;dark=true" width="214" height="173"></iframe>
 <ul>
-<li>Implemented character movement and core gameplay mechanics</li>
-<li>Developed camera system for dynamic player tracking</li>
-<li>Designed interaction systems to enhance gameplay flow</li>
-<li>Contributed to character design and narrative concept</li>
+<li>Character movement and gameplay mechanics</li>
+<li>Camera system</li>
+<li>Interaction systems</li>
 </ul>
-
-<a class="button" href="https://alexvalero.itch.io/skelly-scape" target="_blank">
-Play on Itch
-</a>
-
 </div>
 
-
-<!-- BAIQUIMÚ -->
 <div class="project">
-
 <h3>Baiquimú</h3>
-
-<iframe frameborder="0" 
-src="https://itch.io/embed/4426319?bg_color=560762&amp;fg_color=ffffff&amp;border_color=ffffff" 
-width="300" 
-height="167">
-<a href="https://andreagranados.itch.io/baiquimu">Baiquimú</a>
-</iframe>
-
+<iframe src="https://itch.io/embed/4426319" width="300" height="167"></iframe>
 <ul>
-<li>Developed player movement and combat-related mechanics</li>
-<li>Implemented energy system including energy gain, storage, and transfer to the fountain</li>
-<li>Designed gameplay loop based on defeating enemies and resource management</li>
-<li>Created initial level layout prototype to support gameplay mechanics</li>
+<li>Movement and combat mechanics</li>
+<li>Energy system</li>
+<li>Gameplay loop design</li>
 </ul>
-
-<a class="button" href="https://andreagranados.itch.io/baiquimu" target="_blank">
-Play on Itch
-</a>
-
 </div>
 
-
-<!-- FORTUNE RACING -->
 <div class="project">
-
 <h3>Fortune Racing</h3>
-
-<iframe frameborder="0" 
-src="https://itch.io/embed/4423190?bg_color=642e00&amp;fg_color=ffffff" 
-width="300" 
-height="167">
-<a href="https://alvinmaker.itch.io/fortune-racing">Fortune Racing</a>
-</iframe>
-
+<iframe src="https://itch.io/embed/4423190" width="300" height="167"></iframe>
 <ul>
-<li>Implemented player movement and lane-switching mechanics</li>
-<li>Developed turn-based gameplay logic and attack systems</li>
-<li>Programmed UI feedback for turn states and in-game events</li>
-<li>Integrated gameplay systems with UI to clearly communicate player actions</li>
+<li>Movement and lane switching</li>
+<li>Turn-based system</li>
+<li>UI feedback</li>
 </ul>
-
-<a class="button" href="https://alvinmaker.itch.io/fortune-racing" target="_blank">
-Play on Itch
-</a>
-
 </div>
 
 </div>
-
 </div>
 
 </section>
-
-<section>
-
-<h2>Skills</h2>
-
-<div class="skills-columns">
-
-<div>
-
-<h3>Game Development</h3>
-
-<div class="skills">
-<div class="skill">Unity</div>
-<div class="skill">Gameplay Programming</div>
-<div class="skill">Game Systems</div>
-<div class="skill">Character Controllers</div>
-<div class="skill">Camera Systems</div>
-<div class="skill">State Machines</div>
-<div class="skill">Game Prototyping</div>
-</div>
-
-</div>
-
-<div>
-
-<h3>Programming</h3>
-
-<div class="skills">
-<div class="skill">HTML</div>
-<div class="skill">C#</div>
-<div class="skill">Visual Basic</div>
-<div class="skill">.NET</div>
-<div class="skill">Python</div>
-<div class="skill">Java</div>
-<div class="skill">JavaScript</div>
-<div class="skill">Git</div>
-<div class="skill">GitHub</div>
-</div>
-
-</div>
-
-<div>
-
-<h3>Database</h3>
-
-<div class="skills">
-<div class="skill">SQL</div>
-<div class="skill">MySQL</div>
-<div class="skill">Oracle</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<div class="contact">
-
-<h2>Contact</h2>
-
-<a class="button" href="https://www.linkedin.com/in/alex-leon-a84a68233/" target="_blank">LinkedIn</a>
-<a class="button" href="https://alexvalero.itch.io/" target="_blank">Itch.io</a>
-<a class="button" href="https://github.com/Alex117198" target="_blank">GitHub</a>
-<a class="button" href="mailto:alye198@hotmail.com">Email</a>
-
-</div>
 
 </div>
 
@@ -447,46 +322,43 @@ Play on Itch
 
 <script>
 
-/* PARTICULAS */
-
+// PARTICULAS
 for(let i=0;i<40;i++){
-
 const p=document.createElement("div")
-
 p.className="particle"
-
 p.style.left=Math.random()*100+"vw"
-
 p.style.animationDuration=(8+Math.random()*10)+"s"
-
 p.style.opacity=Math.random()*0.3
-
 document.body.appendChild(p)
-
 }
 
-/* BOTON IR ARRIBA */
-
+// BOTON TOP
 const topButton = document.getElementById("topButton")
-
 window.addEventListener("scroll", () => {
+topButton.style.display = window.scrollY > 300 ? "block" : "none"
+})
 
-if(window.scrollY > 300){
-topButton.style.display = "block"
-}else{
-topButton.style.display = "none"
+topButton.onclick = () => window.scrollTo({top:0,behavior:"smooth"})
+
+// SLIDER
+let currentIndex = 0;
+
+function moveSlide(direction){
+
+const slider = document.getElementById("projectsSlider")
+const projects = document.querySelectorAll(".project")
+
+const maxIndex = projects.length - 2
+
+currentIndex += direction
+
+if(currentIndex < 0) currentIndex = 0
+if(currentIndex > maxIndex) currentIndex = maxIndex
+
+const width = projects[0].getBoundingClientRect().width + 35
+
+slider.style.transform = `translateX(-${currentIndex * width}px)`
 }
-
-})
-
-topButton.addEventListener("click", () => {
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-})
-
-})
 
 </script>
 
