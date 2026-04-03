@@ -381,30 +381,12 @@ let currentIndex = 0;
 function moveSlide(direction){
 const slider = document.getElementById("projectsSlider")
 const projects = document.querySelectorAll(".project")
-const maxIndex = projects.length - 2
+const maxIndex = projects.length - 1
 
 currentIndex += direction
-if(currentIndex < 0){
-slider.style.transition = "none"
-currentIndex = maxIndex
 
-const width = projects[0].getBoundingClientRect().width + 35
-slider.style.transform = `translateX(-${currentIndex * width}px)`
-slider.offsetHeight
-
-slider.style.transition = "transform 0.5s ease"
-return
-}
-if(currentIndex > maxIndex){
-slider.style.transition = "none"
-currentIndex = 0
-
-const width = projects[0].getBoundingClientRect().width + 35
-slider.style.transform = `translateX(-${currentIndex * width}px)`
-slider.offsetHeight
-slider.style.transition = "transform 0.5s ease"
-return
-}
+if(currentIndex > maxIndex) currentIndex = 0
+if(currentIndex < 0) currentIndex = maxIndex
 
 const width = projects[0].getBoundingClientRect().width + 35
 slider.style.transform = `translateX(-${currentIndex * width}px)`
