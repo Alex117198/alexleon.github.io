@@ -377,53 +377,72 @@ topButton.onclick = () => window.scrollTo({top:0,behavior:"smooth"})
 
 // SLIDER INFINITO REAL
 let currentIndex = 1;
-const slider = document.getElementById("projectsSlider")
+let isMoving = false;
 
-function getProjects(){
-    return slider.querySelectorAll(".project")
-}
+const slider = document.getElementById("projectsSlider");
+const projects = slider.querySelectorAll(".project");
 
-// CLONAR PRIMERO Y ÚLTIMO
-const initialProjects = getProjects()
-const firstClone = initialProjects[0].cloneNode(true)
-const lastClone = initialProjects[initialProjects.length - 1].cloneNode(true)
+// CLONES
+const firstClone = projects[0].cloneNode(true);
+const lastClone = projects[projects.length - 1].cloneNode(true);
 
-slider.appendChild(firstClone)
-slider.insertBefore(lastClone, initialProjects[0])
+slider.appendChild(firstClone);
+slider.insertBefore(lastClone, projects[0]);
 
-const gap = 35
+const gap = 35;
+let projectWidth;
 
-function getWidth(){
-    return slider.querySelector(".project").getBoundingClientRect().width + gap
+// CALCULAR UNA SOLA VEZ
+function setWidth(){
+    projectWidth = slider.querySelector(".project").offsetWidth + gap;
 }
 
 // POSICIÓN INICIAL
-slider.style.transform = `translateX(-${getWidth() * currentIndex}px)`
-
-function moveSlide(direction){
-    currentIndex += direction
-    slider.style.transition = "transform 0.5s ease"
-    slider.style.transform = `translateX(-${getWidth() * currentIndex}px)`
+function setInitialPosition(){
+    slider.style.transform = `translateX(-${projectWidth * currentIndex}px)`;
 }
 
-// RESET INVISIBLE
+// INIT
+setWidth();
+setInitialPosition();
+
+// RESPONSIVE FIX
+window.addEventListener("resize", () => {
+    setWidth();
+    setInitialPosition();
+});
+
+// MOVER SLIDE
+function moveSlide(direction){
+
+    if(isMoving) return;
+    isMoving = true;
+
+    currentIndex += direction;
+
+    slider.style.transition = "transform 0.5s ease";
+    slider.style.transform = `translateX(-${projectWidth * currentIndex}px)`;
+}
+
+// LOOP INFINITO
 slider.addEventListener("transitionend", () => {
 
-    const items = getProjects()
+    const items = slider.querySelectorAll(".project");
 
     if(currentIndex === 0){
-        slider.style.transition = "none"
-        currentIndex = items.length - 2
-        slider.style.transform = `translateX(-${getWidth() * currentIndex}px)`
+        slider.style.transition = "none";
+        currentIndex = items.length - 2;
+        slider.style.transform = `translateX(-${projectWidth * currentIndex}px)`;
     }
 
     if(currentIndex === items.length - 1){
-        slider.style.transition = "none"
-        currentIndex = 1
-        slider.style.transform = `translateX(-${getWidth() * currentIndex}px)`
+        slider.style.transition = "none";
+        currentIndex = 1;
+        slider.style.transform = `translateX(-${projectWidth * currentIndex}px)`;
     }
 
-})
+    isMoving = false;
+});
 
 </script>
 
