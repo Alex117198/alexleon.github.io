@@ -375,22 +375,51 @@ topButton.style.display = window.scrollY > 300 ? "block" : "none"
 })
 topButton.onclick = () => window.scrollTo({top:0,behavior:"smooth"})
 
-// SLIDER LOOP
-let currentIndex = 0;
-
-function moveSlide(direction){
+// SLIDER INFINITO REAL
+let currentIndex = 1;
 const slider = document.getElementById("projectsSlider")
 const projects = document.querySelectorAll(".project")
-const maxIndex = projects.length - 1
 
-currentIndex += direction
+// CLONAR PRIMERO Y ÚLTIMO
+const firstClone = projects[0].cloneNode(true)
+const lastClone = projects[projects.length - 1].cloneNode(true)
 
-if(currentIndex > maxIndex) currentIndex = 0
-if(currentIndex < 0) currentIndex = maxIndex
+slider.appendChild(firstClone)
+slider.insertBefore(lastClone, projects[0])
 
-const width = projects[0].getBoundingClientRect().width + 35
-slider.style.transform = `translateX(-${currentIndex * width}px)`
+const allProjects = document.querySelectorAll(".project")
+
+const gap = 35
+
+function getWidth(){
+return allProjects[0].getBoundingClientRect().width + gap
 }
+
+// POSICIÓN INICIAL
+slider.style.transform = `translateX(-${getWidth() * currentIndex}px)`
+
+function moveSlide(direction){
+currentIndex += direction
+slider.style.transition = "transform 0.5s ease"
+slider.style.transform = `translateX(-${getWidth() * currentIndex}px)`
+}
+
+// RESET INVISIBLE
+slider.addEventListener("transitionend", () => {
+
+if(allProjects[currentIndex].isSameNode(firstClone)){
+slider.style.transition = "none"
+currentIndex = 1
+slider.style.transform = `translateX(-${getWidth() * currentIndex}px)`
+}
+
+if(allProjects[currentIndex].isSameNode(lastClone)){
+slider.style.transition = "none"
+currentIndex = allProjects.length - 2
+slider.style.transform = `translateX(-${getWidth() * currentIndex}px)`
+}
+
+})
 
 </script>
 
